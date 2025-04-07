@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flex Panels 💪 Naruto Edition</title>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet" />
+  <link rel="icon" href="https://fav.farm/✅" />
+  <style>
+    html {
+      box-sizing: border-box;
+      background: #ffc600;
+      font-family: 'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    /* Panels container: make it a grid */
+    .panels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-auto-rows: minmax(200px, auto);
+      gap: 10px;
+      padding: 10px;
+      min-height: 100vh;
+    }
+
+    .panel {
+      background: #6B0F9C;
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+      color: white;
+      text-align: center;
+      align-items: center;
+      transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+      font-size: 20px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      cursor: pointer;
+    }
+
+    /* Hover effect */
+    .panel:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Naruto images */
+    .panel1 { background-image: url('https://wallpapercave.com/wp/wp4634630.jpg'); }
+    .panel2 { background-image: url('https://wallpapercave.com/wp/wp7233508.jpg'); }
+    .panel3 { background-image: url('https://wallpapercave.com/wp/wp3795769.jpg'); }
+    .panel4 { background-image: url('https://wallpapercave.com/wp/wp4061993.jpg'); }
+    .panel5 { background-image: url('https://wallpapercave.com/wp/wp2599594.jpg'); }
+    .panel6 { background-image: url('https://wallpapercave.com/wp/wp4676565.jpg'); }
+    .panel7 { background-image: url('https://wallpapercave.com/wp/wp4071437.jpg'); }
+    .panel8 { background-image: url('https://wallpapercave.com/wp/wp1837653.jpg'); }
+    .panel9 { background-image: url('https://wallpapercave.com/wp/wp4058948.jpg'); }
+
+    .panel > * {
+      margin: 0;
+      width: 100%;
+      transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel > *:first-child {
+      transform: translateY(-100%);
+    }
+
+    .panel.open-active > *:first-child {
+      transform: translateY(0);
+    }
+
+    .panel > *:last-child {
+      transform: translateY(100%);
+    }
+
+    .panel.open-active > *:last-child {
+      transform: translateY(0);
+    }
+
+    .panel p {
+      text-transform: uppercase;
+      font-family: 'Amatic SC', cursive;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+      font-size: 2em;
+    }
+
+    .panel p:nth-child(2) {
+      font-size: 4em;
+    }
+
+    .panel.open {
+      flex: 5;
+      font-size: 40px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .panel p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="panels">
+    <div class="panel panel1">
+      <p>Naruto</p>
+      <p>Uzumaki</p>
+      <p>Believe it!</p>
+    </div>
+    <div class="panel panel2">
+      <p>Sasuke</p>
+      <p>Uchiha</p>
+      <p>Revenge</p>
+    </div>
+    <div class="panel panel3">
+      <p>Sakura</p>
+      <p>Haruno</p>
+      <p>Strength</p>
+    </div>
+    <div class="panel panel4">
+      <p>Kakashi</p>
+      <p>Hatake</p>
+      <p>Copy Ninja</p>
+    </div>
+    <div class="panel panel5">
+      <p>Itachi</p>
+      <p>Uchiha</p>
+      <p>Brotherhood</p>
+    </div>
+    <div class="panel panel6">
+      <p>Gaara</p>
+      <p>Of the</p>
+      <p>Sand</p>
+    </div>
+    <div class="panel panel7">
+      <p>Hinata</p>
+      <p>Hyuga</p>
+      <p>Gentle Fist</p>
+    </div>
+    <div class="panel panel8">
+      <p>Shikamaru</p>
+      <p>Nara</p>
+      <p>Shadow</p>
+    </div>
+    <div class="panel panel9">
+      <p>Jiraiya</p>
+      <p>Pervy</p>
+      <p>Sage</p>
+    </div>
+  </div>
+
+  <script>
+    const panels = document.querySelectorAll('.panel');
+
+    function toggleOpen() {
+      this.classList.toggle('open');
+    }
+
+    function toggleActive(e) {
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+  </script>
+</body>
+</html>
