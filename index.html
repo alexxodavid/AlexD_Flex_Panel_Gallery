@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Flex Panels 💪 Naruto Edition</title>
+  <title>Endangered Animals Gallery 🐾</title>
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet" />
-  <link rel="icon" href="https://fav.farm/✅" />
   <style>
     html {
       box-sizing: border-box;
-      background: #ffc600;
-      font-family: 'helvetica neue';
+      background: #f4f4f4;
+      font-family: 'Helvetica Neue', sans-serif;
       font-size: 20px;
       font-weight: 200;
     }
@@ -22,7 +21,6 @@
       box-sizing: inherit;
     }
 
-    /* Panels container: make it a grid */
     .panels {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -33,84 +31,74 @@
     }
 
     .panel {
-      background: #6B0F9C;
-      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
-      color: white;
-      text-align: center;
-      align-items: center;
-      transition:
-        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-        background 0.2s;
-      font-size: 20px;
+      background-color: #333;
       background-size: cover;
       background-position: center;
+      color: white;
+      text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      flex: 1;
+      align-items: center;
+      transition:
+        font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+        transform 0.3s ease,
+        background 0.2s;
+      font-size: 20px;
       cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      min-height: 200px;
     }
 
-    /* Hover effect */
     .panel:hover {
       transform: scale(1.05);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    /* Naruto images */
-    .panel1 { background-image: url('https://wallpapercave.com/wp/wp4634630.jpg'); }
-    .panel2 { background-image: url('https://wallpapercave.com/wp/wp7233508.jpg'); }
-    .panel3 { background-image: url('https://wallpapercave.com/wp/wp3795769.jpg'); }
-    .panel4 { background-image: url('https://wallpapercave.com/wp/wp4061993.jpg'); }
-    .panel5 { background-image: url('https://wallpapercave.com/wp/wp2599594.jpg'); }
-    .panel6 { background-image: url('https://wallpapercave.com/wp/wp4676565.jpg'); }
-    .panel7 { background-image: url('https://wallpapercave.com/wp/wp4071437.jpg'); }
-    .panel8 { background-image: url('https://wallpapercave.com/wp/wp1837653.jpg'); }
-    .panel9 { background-image: url('https://wallpapercave.com/wp/wp4058948.jpg'); }
+    /* Background Images: High-quality Endangered Animal Images */
+    .panel1 { background-image: url('https://images.unsplash.com/photo-1601758123927-1947c042a6d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); } /* Tiger */
+    .panel2 { background-image: url('https://images.unsplash.com/photo-1592906206980-82800553ea50?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); } /* Snow Leopard */
+    .panel3 { background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02cdd042?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); } /* Blue Whale */
+    .panel4 { background-image: url('https://images.unsplash.com/photo-1564053489984-3170f12e51e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); } /* Orangutan */
+    .panel5 { background-image: url('https://images.unsplash.com/photo-1611950736689-c29d76fad06c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); } /* Sea Turtle */
+    .panel6 { background-image: url('https://images.unsplash.com/photo-1605828037154-bb47e810cd7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); } /* Elephant */
+    .panel7 { background-image: url('https://images.unsplash.com/photo-1633537953732-40f99be47847?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); } /* Pangolin */
+    .panel8 { background-image: url('https://images.unsplash.com/photo-1602806523578-48393a9f5a4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); } /* Gorilla */
+    .panel9 { background-image: url('https://images.unsplash.com/photo-1603789589471-10f8917accc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); } /* Red Panda */
 
     .panel > * {
       margin: 0;
+      padding: 0 10px;
       width: 100%;
-      transition: transform 0.5s;
       flex: 1 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .panel > *:first-child {
-      transform: translateY(-100%);
-    }
-
-    .panel.open-active > *:first-child {
-      transform: translateY(0);
-    }
-
-    .panel > *:last-child {
-      transform: translateY(100%);
-    }
-
-    .panel.open-active > *:last-child {
-      transform: translateY(0);
+      backdrop-filter: brightness(60%);
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72);
+      transition: transform 0.5s;
     }
 
     .panel p {
       text-transform: uppercase;
       font-family: 'Amatic SC', cursive;
-      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
       font-size: 2em;
     }
 
     .panel p:nth-child(2) {
-      font-size: 4em;
+      font-size: 3em;
     }
 
     .panel.open {
       flex: 5;
       font-size: 40px;
     }
+
+    .panel > *:first-child { transform: translateY(-100%); }
+    .panel.open-active > *:first-child { transform: translateY(0); }
+    .panel > *:last-child { transform: translateY(100%); }
+    .panel.open-active > *:last-child { transform: translateY(0); }
 
     @media only screen and (max-width: 600px) {
       .panel p {
@@ -122,51 +110,15 @@
 
 <body>
   <div class="panels">
-    <div class="panel panel1">
-      <p>Naruto</p>
-      <p>Uzumaki</p>
-      <p>Believe it!</p>
-    </div>
-    <div class="panel panel2">
-      <p>Sasuke</p>
-      <p>Uchiha</p>
-      <p>Revenge</p>
-    </div>
-    <div class="panel panel3">
-      <p>Sakura</p>
-      <p>Haruno</p>
-      <p>Strength</p>
-    </div>
-    <div class="panel panel4">
-      <p>Kakashi</p>
-      <p>Hatake</p>
-      <p>Copy Ninja</p>
-    </div>
-    <div class="panel panel5">
-      <p>Itachi</p>
-      <p>Uchiha</p>
-      <p>Brotherhood</p>
-    </div>
-    <div class="panel panel6">
-      <p>Gaara</p>
-      <p>Of the</p>
-      <p>Sand</p>
-    </div>
-    <div class="panel panel7">
-      <p>Hinata</p>
-      <p>Hyuga</p>
-      <p>Gentle Fist</p>
-    </div>
-    <div class="panel panel8">
-      <p>Shikamaru</p>
-      <p>Nara</p>
-      <p>Shadow</p>
-    </div>
-    <div class="panel panel9">
-      <p>Jiraiya</p>
-      <p>Pervy</p>
-      <p>Sage</p>
-    </div>
+    <div class="panel panel1"><p>Majestic</p><p>Tiger</p><p>🐅</p></div>
+    <div class="panel panel2"><p>Elusive</p><p>Snow Leopard</p><p>🐆</p></div>
+    <div class="panel panel3"><p>Giant</p><p>Blue Whale</p><p>🐋</p></div>
+    <div class="panel panel4"><p>Wise</p><p>Orangutan</p><p>🦧</p></div>
+    <div class="panel panel5"><p>Graceful</p><p>Sea Turtle</p><p>🐢</p></div>
+    <div class="panel panel6"><p>Mighty</p><p>Elephant</p><p>🐘</p></div>
+    <div class="panel panel7"><p>Rare</p><p>Pangolin</p><p>🦔</p></div>
+    <div class="panel panel8"><p>Strong</p><p>Gorilla</p><p>🦍</p></div>
+    <div class="panel panel9"><p>Playful</p><p>Red Panda</p><p>🦊</p></div>
   </div>
 
   <script>
